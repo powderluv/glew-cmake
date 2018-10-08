@@ -5,9 +5,9 @@ SET( SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src )
 SET( INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include )
 SET( RC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/build )
 
-SET( CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib )
-SET( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib )
-SET( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin )
+SET( CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
+SET( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
+SET( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
 
 OPTION( glew-cmake_BUILD_SHARED "Build the shared glew library" ON )
 OPTION( glew-cmake_BUILD_STATIC "Build the static glew library" ON )
@@ -46,7 +46,7 @@ IF ( glew-cmake_BUILD_STATIC )
 
 		SET_TARGET_PROPERTIES( libglew_static PROPERTIES
 		                       ARCHIVE_OUTPUT_NAME "glew"
-		                       DEBUG_POSTFIX d )
+		                       )
 		TARGET_INCLUDE_DIRECTORIES( libglew_static PUBLIC ${INCLUDE_DIR} )
 		TARGET_LINK_LIBRARIES( libglew_static ${GL_LIBRARY} ${PLATFORM_SPECIFIC_LIBRARIES} )
 		INSTALL( TARGETS libglew_static DESTINATION lib )
@@ -57,7 +57,7 @@ IF ( glew-cmake_BUILD_STATIC )
 
 		SET_TARGET_PROPERTIES( libglewmx_static PROPERTIES
 		                       ARCHIVE_OUTPUT_NAME "glewmx"
-		                       DEBUG_POSTFIX d )
+		                       )
 		TARGET_COMPILE_DEFINITIONS( libglewmx_static INTERFACE GLEW_MX)
 		TARGET_INCLUDE_DIRECTORIES( libglewmx_static PUBLIC ${INCLUDE_DIR} )
 		TARGET_LINK_LIBRARIES( libglewmx_static ${GL_LIBRARY} ${PLATFORM_SPECIFIC_LIBRARIES} )
@@ -72,7 +72,7 @@ IF ( glew-cmake_BUILD_SHARED )
 		SET_TARGET_PROPERTIES( libglew_shared PROPERTIES
 		                       RUNTIME_OUTPUT_NAME "glew"
 		                       LIBRARY_OUTPUT_NAME "glew"
-		                       DEBUG_POSTFIX d )
+		                       )
 
 		TARGET_INCLUDE_DIRECTORIES( libglew_shared PUBLIC ${INCLUDE_DIR} )
 		TARGET_LINK_LIBRARIES( libglew_shared ${GL_LIBRARY} ${PLATFORM_SPECIFIC_LIBRARIES} )
@@ -85,7 +85,7 @@ IF ( glew-cmake_BUILD_SHARED )
 		SET_TARGET_PROPERTIES( libglewmx_shared PROPERTIES
 		                       RUNTIME_OUTPUT_NAME "glewmx"
 		                       LIBRARY_OUTPUT_NAME "glewmx"
-		                       DEBUG_POSTFIX d )
+		                       )
 
 		TARGET_COMPILE_DEFINITIONS( libglewmx_shared INTERFACE GLEW_MX)
 		TARGET_INCLUDE_DIRECTORIES( libglewmx_shared PUBLIC ${INCLUDE_DIR} )
