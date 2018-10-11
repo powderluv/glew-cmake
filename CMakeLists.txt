@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED( VERSION 2.6 )
+CMAKE_MINIMUM_REQUIRED( VERSION 3.10 )
 PROJECT( "glew" )
 
 SET( SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src )
@@ -9,10 +9,10 @@ SET( CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
 SET( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
 SET( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
 
-OPTION( glew-cmake_BUILD_SHARED "Build the shared glew library" ON )
+OPTION( glew-cmake_BUILD_SHARED "Build the shared glew library" OFF )
 OPTION( glew-cmake_BUILD_STATIC "Build the static glew library" ON )
 OPTION( glew-cmake_BUILD_SINGLE_CONTEXT "Build the single context glew library" ON )
-OPTION( glew-cmake_BUILD_MULTI_CONTEXT "Build the multi context glew library" ON )
+OPTION( glew-cmake_BUILD_MULTI_CONTEXT "Build the multi context glew library" OFF )
 
 
 SET( LIBGLEW_SRCS ${SRC_DIR}/glew.c )
